@@ -3,9 +3,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductComponent } from './product/product.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { PagesComponent } from './pages.component';
-import { AppRoutingModule } from '../app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { SharedModule } from '../shared/shared.module';
+import { AppRoutingModule } from '../app-routing.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -17,10 +17,9 @@ import { SharedModule } from '../shared/shared.module';
     PagesComponent
   ],
   imports: [
-    SharedModule,
     BrowserModule,
     AppRoutingModule,
-    PagesModule
+    RouterModule,    
   ],
   exports: [
     DashboardComponent,
