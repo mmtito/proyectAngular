@@ -14,7 +14,6 @@ export class ProductService {
 
   public getAll(url : string){
     return this.http.get(url);
-
   }
 
   public deleteById(url : string){

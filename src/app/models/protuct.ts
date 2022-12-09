@@ -1,9 +1,10 @@
-import { Catalogue } from "./catelogue";
+import { Catalogue } from "./catalogue";
 
 export interface Product {
     id : number;
     title : string;
     price : number;
     description : string;
-    category : Catalogue[];
+    images: string[];
+    categoryId : Catalogue[];
 }

@@ -13,11 +13,54 @@ export class ProductComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.findAll();
-    this.FindById();
-    this.deleteById();
-    this.update();
+    //this.findAll();
+    //this.FindById();
+    //this.deleteById();
+    //this.update();
     this.save();
+  }
+
+  public update() {
+    this.productService.putById('https://api.escuelajs.co/api/v1/products/70',
+      {
+        id: 70,
+        title: "maximiliano",
+        price: 10,
+        description: "maximiliano",
+        images: [
+          'Maximilian01',
+          'Maximilian02',
+          'Maximilian03'
+        ],
+        categoryId: [
+          {
+            id: 0,
+            image: '',
+            name: '',
+          }
+        ]
+      }
+    ).subscribe(
+      (response) => {
+        console.log(response);
+      }
+    )
+  }
+
+  public deleteById() {
+    this.productService.deleteById('https://api.escuelajs.co/api/v1/products/60').subscribe(
+      (response) => {
+        console.log(response);
+      }
+    )
+  }
+
+  public FindById() {
+    this.productService.getAll('https://api.escuelajs.co/api/v1/products/39').subscribe(
+      (response) => {
+        console.log(response);
+      }
+    )
   }
 
   public findAll() {
@@ -28,50 +71,24 @@ export class ProductComponent implements OnInit {
     )
   }
 
-  public FindById() {
-    this.productService.getAll('https://api.escuelajs.co/api/v1/products/9').subscribe(
-      (response) => {
-        console.log(response);
-      }
-    )
-  }
-
-  public deleteById() {
-    this.productService.deleteById('https://api.escuelajs.co/api/v1/products/9').subscribe(
-      (response) => {
-        console.log(response);
-      }
-    )
-  }
-
-  public update() {
-    this.productService.putById('https://api.escuelajs.co/api/v1/products/10',
+  public save() {
+    this.productService.post('https://api.escuelajs.co/api/v1/products/',
       {
-        price: 10,
-        description: 'Max',
-        id: 0,
-        title: 'Max',
-        category: [{ id: 0, name: 'Max', image: 'max' }]
+        id: 2,
+        title: "Maximiliano Guardar",
+        price: 100,
+        description: "Maximiliano Guardar",
+        images: [
+          'Maximiliano Guardar',
+          'Maximiliano Guardar',
+          'Maximiliano Guardar'
+        ],
+        categoryId: []
       }
     ).subscribe(
       (response) => {
-        console.log("Se a Actualizado con exito");
+        console.log('Se guardo con exito')
       }
     )
-  }
-
-  public save (){
-    this.productService.post('https://api.escuelajs.co/api/v1/products/',
-    {
-      price: 1,
-      id: 201,
-      title: 'hola',
-      description: 'hola',
-      category: [{
-        id: 0,
-        image: 'hola',
-        name: 'hola'
-      }]
-    })
   }
 }
